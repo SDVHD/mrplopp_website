@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #E8401C;
+  --color-primary-dark: #c93518;
+  --color-secondary: #F5A623;
+  --color-accent: #2D6A4F;
+  --color-bg: #FDF6EC;
+  --color-surface: #FFFAF3;
+  --color-dark: #1A1208;
+  --color-text: #2C1A0E;
+  --color-muted: #7A5C44;
+  --font-sans: 'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 64px; /* NavBar-Höhe */
+}
+
+body {
+  background-color: #FDF6EC;
+  color: #2C1A0E;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+/* Custom font classes */
+.font-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-mono-jet {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Float animation for receipt card */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px) rotate(-3deg); }
+  50%       { transform: translateY(-16px) rotate(-2deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.float-card {
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.fade-in-up-1 { animation: fadeInUp 0.7s 0.1s ease-out both; }
+.fade-in-up-2 { animation: fadeInUp 0.7s 0.2s ease-out both; }
+.fade-in-up-3 { animation: fadeInUp 0.7s 0.3s ease-out both; }
