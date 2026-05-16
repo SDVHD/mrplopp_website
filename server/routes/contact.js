@@ -6,7 +6,8 @@ import { buildConfirmationEmail } from '../emails/confirmation.js'
 export const contactRoute = new Hono()
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-const FROM_DOMAIN = process.env.RESEND_FROM_DOMAIN // z.B. contact.mrplopp.ch
+const FROM_DOMAIN = process.env.RESEND_FROM_DOMAIN  // z.B. contact.mrplopp.ch
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL          // z.B. hallo@mrplopp.ch
 
 const REQUIRED_FIELDS = ['name', 'organization', 'email', 'subject']
 
@@ -43,7 +44,7 @@ contactRoute.post('/', async (c) => {
     // Admin-Benachrichtigung
     await resend.emails.send({
       from: `Mr. Plopp Website <noreply@${FROM_DOMAIN}>`,
-      to: [`hallo@${FROM_DOMAIN}`],
+      to: [ADMIN_EMAIL],
       replyTo: body.email,
       subject: `[${subjectLabel}] ${body.organization} — ${body.name}`,
       html: buildAdminEmail(body),
