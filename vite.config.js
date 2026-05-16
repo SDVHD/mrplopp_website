@@ -15,4 +15,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  server: {
+    proxy: {
+      // Dev: Vite :5173 → Hono :3000
+      '/api': 'http://localhost:3000',
+    },
+  },
 })
