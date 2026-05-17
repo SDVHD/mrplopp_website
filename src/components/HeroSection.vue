@@ -1,5 +1,9 @@
 <script setup>
 import { ArrowDown } from 'lucide-vue-next'
+
+function scrollTo(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -53,15 +57,15 @@ import { ArrowDown } from 'lucide-vue-next'
 
         <!-- CTA buttons -->
         <div class="flex flex-wrap gap-4">
-          <a href="#contact"
+          <button @click="scrollTo('contact')"
             class="inline-flex items-center bg-primary hover:bg-primary-dark text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5">
             Demo anfragen
-          </a>
-          <a href="#how-it-works"
+          </button>
+          <button @click="scrollTo('how-it-works')"
             class="inline-flex items-center gap-2 text-text font-semibold px-8 py-4 rounded-xl border border-text/20 hover:border-text/40 hover:bg-text/5 transition-all duration-200">
             Wie funktioniert's?
             <ArrowDown class="w-4 h-4" :stroke-width="2" />
-          </a>
+          </button>
         </div>
       </div>
 
