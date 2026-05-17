@@ -5,10 +5,6 @@ import { buildConfirmationEmail } from '../emails/confirmation.js'
 
 export const contactRoute = new Hono()
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-const FROM_DOMAIN = process.env.RESEND_FROM_DOMAIN  // z.B. contact.mrplopp.ch
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL          // z.B. hallo@mrplopp.ch
-
 const REQUIRED_FIELDS = ['name', 'organization', 'email', 'subject']
 
 const SUBJECT_LABELS = {
@@ -19,6 +15,17 @@ const SUBJECT_LABELS = {
 }
 
 contactRoute.post('/', async (c) => {
+  const apiKey = process.env.RESEND_API_KEY
+  const FROM_DOMAIN = process.env.RESEND_FROM_DOMAIN
+  const ADMIN_EMAIL = process.env.ADMIN_EMAIL
+
+  if (!apiKey) {
+    console.error('RESEND_API_KEY is not set')
+    return c.json({ error: 'Serverkonfiguration fehlerhaft' }, 500)
+  }
+
+  const resend = new Resend(apiKey)
+
   let body
   try {
     body = await c.req.json()
