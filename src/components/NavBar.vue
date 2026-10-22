@@ -18,7 +18,7 @@ function scrollTo(id) {
   >
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <button
-        @click="scrollTo('hero')"
+        @click="scrollTo('testlauf')"
         class="font-display text-xl font-bold text-text tracking-tight cursor-pointer"
         style="font-family: 'Playfair Display', serif;"
       >
@@ -26,9 +26,9 @@ function scrollTo(id) {
       </button>
 
       <div class="hidden md:flex items-center gap-8 text-sm font-medium text-muted">
+        <button @click="scrollTo('testlauf')"     class="hover:text-text transition-colors">Testlauf</button>
         <button @click="scrollTo('features')"     class="hover:text-text transition-colors">Features</button>
         <button @click="scrollTo('how-it-works')" class="hover:text-text transition-colors">Wie's geht</button>
-        <button @click="scrollTo('konfigurator')" class="hover:text-text transition-colors">Preise</button>
         <button @click="scrollTo('faq')"          class="hover:text-text transition-colors">FAQ</button>
       </div>
 

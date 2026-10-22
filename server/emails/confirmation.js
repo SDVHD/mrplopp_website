@@ -1,9 +1,13 @@
+import { escapeHtml } from './escape.js'
+
 /**
  * HTML-Template für die Bestätigungs-E-Mail an den Absender.
  * @param {Object} data - Formulardaten
  */
 export function buildConfirmationEmail(data) {
-  const firstName = data.name.split(' ')[0]
+  const firstName = escapeHtml(data.name.trim().split(/\s+/)[0])
+  const organization = escapeHtml(data.organization)
+  const date = escapeHtml(data.date)
 
   return `<!DOCTYPE html>
 <html lang="de">
@@ -23,7 +27,7 @@ export function buildConfirmationEmail(data) {
 
       <div style="background:#FDF6EC;border-left:4px solid #E8401C;border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0">
         <p style="margin:0 0 4px;color:#7A5C44;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em">Ihre Anfrage</p>
-        <p style="margin:0;color:#2C1A0E;font-size:14px"><strong>${data.organization}</strong>${data.date ? ` · Fest am ${data.date}` : ''}</p>
+        <p style="margin:0;color:#2C1A0E;font-size:14px"><strong>${organization}</strong>${date ? ` · Fest am ${date}` : ''}</p>
       </div>
 
       <p style="margin:0 0 16px;color:#2C1A0E;font-size:15px;line-height:1.6">

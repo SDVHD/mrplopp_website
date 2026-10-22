@@ -1,3 +1,5 @@
+import { escapeHtml } from './escape.js'
+
 /**
  * HTML-Template für die Admin-Benachrichtigung bei neuer Kontaktanfrage.
  * @param {Object} data - Formulardaten
@@ -10,14 +12,18 @@ export function buildAdminEmail(data) {
     frage: 'Allgemeine Frage',
   }
 
+  // Alle Benutzereingaben werden maskiert, bevor sie ins HTML kommen
+  const email = escapeHtml(data.email)
+  const subjectLabel = escapeHtml(subjectLabels[data.subject] || data.subject)
+
   const rows = [
-    ['Name', data.name],
-    ['Verein / Organisation', data.organization],
-    ['E-Mail', `<a href="mailto:${data.email}" style="color:#E8401C">${data.email}</a>`],
-    ['Telefon', data.phone || '—'],
-    ['Datum des Festes', data.date || '—'],
-    ['Erwartete Gäste', data.guests || '—'],
-    ['Anliegen', subjectLabels[data.subject] || data.subject],
+    ['Name', escapeHtml(data.name)],
+    ['Verein / Organisation', escapeHtml(data.organization)],
+    ['E-Mail', `<a href="mailto:${email}" style="color:#E8401C">${email}</a>`],
+    ['Telefon', escapeHtml(data.phone || '—')],
+    ['Datum des Festes', escapeHtml(data.date || '—')],
+    ['Erwartete Gäste', escapeHtml(data.guests || '—')],
+    ['Anliegen', subjectLabel],
   ]
 
   const tableRows = rows.map(([label, value]) => `
@@ -34,7 +40,7 @@ export function buildAdminEmail(data) {
 
     <div style="background:#E8401C;padding:24px 32px">
       <p style="margin:0;color:rgba(255,255,255,0.8);font-size:12px;letter-spacing:0.1em;text-transform:uppercase">Mr. Plopp — Neue Anfrage</p>
-      <h1 style="margin:4px 0 0;color:#fff;font-size:22px;font-weight:700">${subjectLabels[data.subject] || data.subject}</h1>
+      <h1 style="margin:4px 0 0;color:#fff;font-size:22px;font-weight:700">${subjectLabel}</h1>
     </div>
 
     <div style="padding:24px 32px">
@@ -45,11 +51,11 @@ export function buildAdminEmail(data) {
       ${data.message ? `
       <div style="margin-top:20px">
         <p style="margin:0 0 8px;color:#7A5C44;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em">Nachricht</p>
-        <div style="background:#FDF6EC;border:1px solid #F0E8DA;border-radius:10px;padding:16px;color:#2C1A0E;font-size:14px;line-height:1.6;white-space:pre-wrap">${data.message}</div>
+        <div style="background:#FDF6EC;border:1px solid #F0E8DA;border-radius:10px;padding:16px;color:#2C1A0E;font-size:14px;line-height:1.6;white-space:pre-wrap">${escapeHtml(data.message)}</div>
       </div>` : ''}
 
       <div style="margin-top:24px;text-align:center">
-        <a href="mailto:${data.email}?subject=Re: Ihre Anfrage bei Mr. Plopp"
+        <a href="mailto:${email}?subject=${encodeURIComponent('Re: Ihre Anfrage bei Mr. Plopp')}"
            style="display:inline-block;background:#E8401C;color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:12px 28px;border-radius:10px">
           Direkt antworten
         </a>

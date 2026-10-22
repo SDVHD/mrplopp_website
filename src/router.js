@@ -7,6 +7,8 @@ export default createRouter({
   routes: [
     { path: '/', component: LandingPage },
     { path: '/impressum', component: Impressum },
+    // Unbekannte Routen (z.B. alte #section-Links) → Startseite statt leerer Seite
+    { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
   scrollBehavior: () => ({ top: 0 }),
 })

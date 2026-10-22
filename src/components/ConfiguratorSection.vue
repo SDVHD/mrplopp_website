@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { Tablet, Printer, Server, ShieldCheck } from 'lucide-vue-next'
+import { scrollToSection } from '../utils/scroll.js'
 
 const days = ref(1)
 const tablets = ref(2)
@@ -346,7 +347,7 @@ const dayOptions = [1, 2, 3, 4, 5, 6, 7]
 
               <!-- CTA -->
               <a
-                href="#contact"
+                href="#contact" @click.prevent="scrollToSection('contact')"
                 class="mt-8 flex items-center justify-center w-full bg-primary hover:bg-primary-dark text-white font-semibold py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
               >
                 Offerte für dieses Paket anfragen

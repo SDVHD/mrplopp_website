@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { ChevronDown } from 'lucide-vue-next'
+import { scrollToSection } from '../utils/scroll.js'
 
 const faqs = [
   {
@@ -9,7 +10,7 @@ const faqs = [
   },
   {
     q: 'Wie viele Tablets sind im Paket?',
-    a: 'Die Anzahl Tablets stellen Sie im Live-Konfigurator selbst zusammen — von 1 bis 10. Pro 5 Tablets wird ein kleiner Aufschlag berechnet. So zahlen Sie nur was Sie brauchen.',
+    a: 'Die Anzahl Tablets stimmen wir gemeinsam auf Ihr Fest ab — von 1 bis 10. So erhalten Sie genau das, was Sie brauchen.',
   },
   {
     q: 'Was passiert bei Hub-Ausfall?',
@@ -52,7 +53,7 @@ function toggle(i) { open.value = open.value === i ? null : i }
           Noch etwas unklar? Wir beantworten gerne alle Fragen persönlich.
         </p>
         <a
-          href="#contact"
+          href="#contact" @click.prevent="scrollToSection('contact')"
           class="inline-flex items-center bg-primary hover:bg-primary-dark text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-sm"
         >
           Frage stellen

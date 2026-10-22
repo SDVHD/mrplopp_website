@@ -1,5 +1,6 @@
 <script setup>
 import { Check } from 'lucide-vue-next'
+import { scrollToSection } from '../utils/scroll.js'
 
 // Immer in jedem Paket enthalten
 const always = [
@@ -35,6 +36,11 @@ const tiers = [
     featured: false,
   },
 ]
+
+// `document` ist im Template nicht verfügbar — daher als Funktion
+function scrollToConfigurator() {
+  document.getElementById('konfigurator')?.scrollIntoView({ behavior: 'smooth' })
+}
 
 const options = [
   { label: 'Zusätzliche Küchen-Monitore', price: '+ 35 CHF / Stk.' },
@@ -127,7 +133,7 @@ const options = [
               </div>
             </div>
 
-            <a href="#contact"
+            <a href="#contact" @click.prevent="scrollToSection('contact')"
               class="mt-5 block w-full text-center text-sm font-semibold py-2.5 rounded-xl transition-all duration-200"
               :class="tier.featured
                 ? 'bg-primary text-white hover:bg-primary-dark shadow-sm hover:shadow-md'
@@ -145,7 +151,9 @@ const options = [
           <p class="text-muted text-xs mt-0.5">Stellen Sie Ihr Paket mit dem Live-Konfigurator individuell zusammen.</p>
         </div>
         <button
-          @click="document.getElementById('konfigurator')?.scrollIntoView({ behavior: 'smooth' })"
+          type="button"
+          aria-label="Zum Live-Konfigurator scrollen"
+          @click="scrollToConfigurator"
           class="flex-shrink-0 text-sm font-semibold text-primary hover:text-primary-dark transition-colors flex items-center gap-1.5"
         >
           Zum Konfigurator

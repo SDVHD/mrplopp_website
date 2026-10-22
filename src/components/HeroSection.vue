@@ -130,7 +130,7 @@ function scrollTo(id) {
           </div>
           <div class="absolute -bottom-2 -left-4 bg-secondary text-text text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
             style="font-family: 'DM Sans', sans-serif;">
-            5-Rp. Rundung ✓
+            TWINT &amp; Karten ✓
           </div>
         </div>
       </div>

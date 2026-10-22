@@ -14,15 +14,22 @@ const SUBJECT_LABELS = {
   frage: 'Allgemeine Frage',
 }
 
-contactRoute.post('/', async (c) => {
-  const apiKey = process.env.RESEND_API_KEY
-  const FROM_DOMAIN = process.env.RESEND_FROM_DOMAIN
-  const ADMIN_EMAIL = process.env.ADMIN_EMAIL
+const REQUIRED_ENV = ['RESEND_API_KEY', 'RESEND_FROM_DOMAIN', 'ADMIN_EMAIL']
 
-  if (!apiKey) {
-    console.error('RESEND_API_KEY is not set')
+export function getMissingEnv() {
+  return REQUIRED_ENV.filter((name) => !process.env[name]?.trim())
+}
+
+contactRoute.post('/', async (c) => {
+  const missingEnv = getMissingEnv()
+  if (missingEnv.length > 0) {
+    console.error(`Fehlende Environment Variables: ${missingEnv.join(', ')}`)
     return c.json({ error: 'Serverkonfiguration fehlerhaft' }, 500)
   }
+
+  const apiKey = process.env.RESEND_API_KEY
+  const FROM_DOMAIN = process.env.RESEND_FROM_DOMAIN.trim()
+  const ADMIN_EMAIL = process.env.ADMIN_EMAIL.trim()
 
   const resend = new Resend(apiKey)
 
@@ -33,9 +40,13 @@ contactRoute.post('/', async (c) => {
     return c.json({ error: 'Ungültige Anfrage' }, 400)
   }
 
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return c.json({ error: 'Ungültige Anfrage' }, 400)
+  }
+
   // Validierung
   for (const field of REQUIRED_FIELDS) {
-    if (!body[field]?.trim()) {
+    if (typeof body[field] !== 'string' || !body[field].trim()) {
       return c.json({ error: `Feld '${field}' fehlt` }, 400)
     }
   }

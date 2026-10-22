@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Mr. Plopp: Serifen-P mit aufsteigenden "Plopp"-Blasen -->
+  <rect width="64" height="64" rx="14" fill="#E8401C"/>
+  <path fill="#FFFAF3" fill-rule="evenodd"
+    d="M15 12H35C45 12 50.5 18.5 50.5 26.5S45 41 35 41H30V47.5H34.5V52H15V47.5H20V16.5H15ZM30 17.5V35.5H34.5C39.5 35.5 41.5 31.5 41.5 26.5S39.5 17.5 34.5 17.5Z"/>
+  <circle cx="47" cy="50" r="6.5" fill="#F5A623"/>
+  <circle cx="56" cy="40.5" r="3.5" fill="#F5A623"/>
+  <circle cx="57" cy="32" r="2" fill="#F5A623" opacity="0.85"/>
+</svg>

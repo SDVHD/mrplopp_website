@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
 import { readFileSync } from 'fs'
-import { contactRoute } from './routes/contact.js'
+import { contactRoute, getMissingEnv } from './routes/contact.js'
 
 const app = new Hono()
 
@@ -20,6 +20,13 @@ app.get('/*', (c) => {
   const html = readFileSync('./dist/index.html', 'utf-8')
   return c.html(html)
 })
+
+// Fehlende Konfiguration früh melden — der Server startet trotzdem,
+// damit die statische Seite erreichbar bleibt (/api/contact antwortet dann mit 500)
+const missingEnv = getMissingEnv()
+if (missingEnv.length > 0) {
+  console.error(`Fehlende Environment Variables: ${missingEnv.join(', ')} — Kontaktformular deaktiviert`)
+}
 
 const port = Number(process.env.PORT) || 3000
 
