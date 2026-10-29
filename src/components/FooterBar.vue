@@ -14,6 +14,7 @@
         <div class="flex items-center gap-6 text-sm text-muted">
           <a href="mailto:hallo@mrplopp.ch" class="hover:text-text transition-colors">hallo@mrplopp.ch</a>
           <RouterLink to="/impressum" class="hover:text-text transition-colors">Impressum</RouterLink>
+          <RouterLink to="/datenschutz" class="hover:text-text transition-colors">Datenschutz</RouterLink>
         </div>
       </div>
 

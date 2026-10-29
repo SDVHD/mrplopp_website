@@ -165,6 +165,7 @@ const inputClass = 'w-full rounded-xl border border-text/15 bg-bg px-4 py-3 text
 
           <p class="text-xs text-muted text-center">
             Mit dem Absenden stimmen Sie zu, dass wir Ihre Angaben zur Bearbeitung Ihrer Anfrage verwenden.
+            Mehr dazu in der <RouterLink to="/datenschutz" class="underline hover:text-text transition-colors">Datenschutzerklärung</RouterLink>.
           </p>
         </form>
 
