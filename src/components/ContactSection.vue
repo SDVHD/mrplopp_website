@@ -127,10 +127,11 @@ const inputClass = 'w-full rounded-xl border border-text/15 bg-bg px-4 py-3 text
               <label class="block text-sm font-medium text-text mb-1.5">Erwartete Gäste</label>
               <select v-model="form.guests" :class="inputClass">
                 <option value="">Bitte wählen</option>
-                <option value="<100">&lt; 100</option>
-                <option value="100-300">100–300</option>
-                <option value="300-500">300–500</option>
-                <option value="500+">500+</option>
+                <option value="<200">bis 200</option>
+                <option value="200-500">200–500</option>
+                <option value="500-1000">500–1'000</option>
+                <option value="1000-2500">1'000–2'500</option>
+                <option value="2500+">über 2'500</option>
               </select>
             </div>
           </div>
