@@ -1,5 +1,5 @@
 <script setup>
-import { WifiOff, Calculator, CreditCard, Zap, Tablet, LayoutGrid } from 'lucide-vue-next'
+import { WifiOff, Calculator, CreditCard, Zap, Tablet, MapPin } from 'lucide-vue-next'
 
 const features = [
   {
@@ -13,9 +13,9 @@ const features = [
     description: '8.1% und 2.6% werden automatisch berechnet und sauber ausgewiesen.',
   },
   {
-    icon: CreditCard,
-    title: '5-Rappen-Rundung',
-    description: 'Gesetzlich korrekt — kein manuelles Runden, kein Stress an der Kasse.',
+    icon: MapPin,
+    title: 'Mehrere Standorte',
+    description: 'Bar, Festzelt, Grill und Kafistube gleichzeitig — jede Station mit eigenem Kassen-Layout, alles läuft über ein System.',
   },
   {
     icon: Zap,
@@ -28,7 +28,7 @@ const features = [
     description: 'Für Samsung Galaxy Tab ausgelegt — robust, alltagstauglich, festbewährt.',
   },
   {
-    icon: LayoutGrid,
+    icon: CreditCard,
     title: 'TWINT & Karte',
     description: 'Alle Zahlungsmittel akzeptiert — TWINT, Bargeld, Karte. Alles korrekt verbucht.',
   },
