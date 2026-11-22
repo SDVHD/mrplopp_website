@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: 'Wie viele Tablets sind im Paket?',
-    a: 'Die Anzahl Tablets stimmen wir gemeinsam auf Ihr Fest ab — von 1 bis 10. So erhalten Sie genau das, was Sie brauchen.',
+    a: 'Die Anzahl Tablets stimmen wir gemeinsam auf Ihr Fest ab — vom kleinen Dorffest bis zum Grossanlass mit mehr als 10 Tablets. So erhalten Sie genau das, was Sie brauchen.',
   },
   {
     q: 'Was passiert bei Hub-Ausfall?',
@@ -22,7 +22,11 @@ const faqs = [
   },
   {
     q: 'Unterstützt Mr. Plopp TWINT?',
-    a: 'Ja. TWINT, Bargeld und Karte werden unterstützt. Die 5-Rappen-Rundung wird automatisch korrekt angewendet.',
+    a: 'Ja. TWINT, Bargeld und Karte werden unterstützt.',
+  },
+  {
+    q: 'Wie kommt das Geld zu unserem Verein?',
+    a: 'Karten- und TWINT-Zahlungen laufen über unseren Zahlungspartner Worldline. Worldline zahlt die Einnahmen direkt auf das Konto Ihres Vereins aus — das Geld läuft nie über uns, wir halten zu keinem Zeitpunkt Einnahmen zurück. Bargeld bleibt ohnehin in Ihrer Kasse.',
   },
   {
     q: 'Wie läuft Lieferung und Setup ab?',
